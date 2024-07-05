@@ -7,9 +7,9 @@ public class User : BaseEntity
     public DateTime BirthDate { get; private set; }
     public DateTime CreatedAt { get; private set; }
     public bool Active { get; set; }
-    public IEnumerable<UserSkill> Skills { get; private set; }
-    public IEnumerable<Project> OwnedProjects { get; private set; }
-    public IEnumerable<Project> FreelanceProject { get; set; }
+    public List<UserSkill> Skills { get; private set; }
+    public List<Project> OwnedProjects { get; private set; }
+    public List<Project> FreelanceProject { get; set; }
 
     public User(string fullName, string email, DateTime birthDate)
     {
@@ -18,8 +18,8 @@ public class User : BaseEntity
         BirthDate = birthDate;
         CreatedAt = DateTime.Now;
         Active = true;
-        Skills = Enumerable.Empty<UserSkill>();
-        OwnedProjects = Enumerable.Empty<Project>();
-        FreelanceProject = Enumerable.Empty<Project>();
+        Skills = new List<UserSkill>();
+        OwnedProjects = new List<Project>();
+        FreelanceProject = new List<Project>();
     }
 }

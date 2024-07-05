@@ -1,3 +1,5 @@
+using DevFreela.Core.Enums;
+
 namespace DevFreela.Core.Entities;
 
 public class Project : BaseEntity
@@ -11,5 +13,17 @@ public class Project : BaseEntity
     public DateTime? StartedAt { get; private set; }
     public DateTime? FinishedAt { get; private set; }
     public ProjectStatusEnum Status { get; private set; }
-    public IEnumerable<ProjectComment> Comments { get; private set; }
+    public List<ProjectComment> Comments { get; private set; }
+
+    public Project(string title, string description, int idClient, int idFreelancer, decimal? totalCost)
+    {
+        Title = title;
+        Description = description;
+        IdClient = idClient;
+        IdFreelancer = idFreelancer;
+        TotalCost = totalCost;
+        Status = ProjectStatusEnum.Created;
+        CreatedAt = DateTime.Now;
+        Comments = new List<ProjectComment>();
+    }
 }
