@@ -1,0 +1,25 @@
+﻿services:
+  devfreela.api:
+    image: devfreela.api
+    container_name: devfreela.api
+    build:
+      context: .
+      dockerfile: DevFreela.API/Dockerfile
+    ports:
+      - "5000:80"
+  mysql:
+    image: mysql:8.0
+    container_name: devfreela.db
+    environment:
+      MYSQL_ROOT_PASSWORD: "yma2578k"
+      MYSQL_DATABASE: "devfreela"
+      MYSQL_USER: "dev"
+      MYSQL_PASSWORD: "yma2578k"
+    ports:
+      - "5001:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
+
+git
