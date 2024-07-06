@@ -8,6 +8,8 @@ public class DatabaseContext
     public List<User> Users { get; set; }
     public List<Skill> Skills { get; set; }
 
+    public List<ProjectComment> ProjectComments { get; set; }
+
     public DatabaseContext()
     {
         Projects = new List<Project>
