@@ -6,16 +6,16 @@ namespace DevFreela.Application.Services;
 
 public class SkillService : ISkillService
 {
-    private readonly DatabaseContext _databaseContext;
+    private readonly DevFreelaDbContext _devFreelaDbContext;
 
-    public SkillService(DatabaseContext databaseContext)
+    public SkillService(DevFreelaDbContext devFreelaDbContext)
     {
-        _databaseContext = databaseContext;
+        _devFreelaDbContext = devFreelaDbContext;
     }
 
     public List<SkillViewModel> GetAll()
     {
-        var skills = _databaseContext.Skills
+        var skills = _devFreelaDbContext.Skills
             .Select(sk => new SkillViewModel(sk.Id, sk.Description))
             .ToList();
         return skills;

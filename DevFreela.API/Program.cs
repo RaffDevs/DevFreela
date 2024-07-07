@@ -5,7 +5,7 @@ using DevFreela.Infrastructure.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddSingleton<DatabaseContext>();
+builder.Services.AddSingleton<DevFreelaDbContext>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddControllers();

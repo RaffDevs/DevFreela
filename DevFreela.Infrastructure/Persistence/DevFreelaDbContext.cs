@@ -2,7 +2,7 @@ using DevFreela.Core.Entities;
 
 namespace DevFreela.Infrastructure.Persistence;
 
-public class DatabaseContext
+public class DevFreelaDbContext
 {
     public List<Project> Projects { get; set; }
     public List<User> Users { get; set; }
@@ -10,7 +10,7 @@ public class DatabaseContext
 
     public List<ProjectComment> ProjectComments { get; set; }
 
-    public DatabaseContext()
+    public DevFreelaDbContext()
     {
         Projects = new List<Project>
         {
