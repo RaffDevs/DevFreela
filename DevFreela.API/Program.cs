@@ -4,10 +4,10 @@ using DevFreela.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-string connectionString = $"Server={builder.Configuration["DB_SERVER"]};" +
-                          $"Database={builder.Configuration["DB_DATABASE"]};" +
-                          $"User={builder.Configuration["DB_USER"]};" +
-                          $"Password={builder.Configuration["DB_PASSWORD"]};";
+string connectionString = $"Server={Environment.GetEnvironmentVariable("DB_SERVER")};" +
+                          $"Database={Environment.GetEnvironmentVariable("DB_DATABASE")};" +
+                          $"User={Environment.GetEnvironmentVariable("DB_USER")};" +
+                          $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};";
 // Add services to the container.
 builder.Services.AddDbContext<DevFreelaDbContext>(options =>
 {
