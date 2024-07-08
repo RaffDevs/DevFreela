@@ -10,6 +10,8 @@ public class User : BaseEntity
     public List<UserSkill> Skills { get; private set; }
     public List<Project> OwnedProjects { get; private set; }
     public List<Project> FreelanceProject { get; set; }
+    
+    public List<ProjectComment> Comments { get; set; }
 
     public User(string fullName, string email, DateTime birthDate)
     {
