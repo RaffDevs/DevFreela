@@ -7,15 +7,15 @@
       dockerfile: DevFreela.API/Dockerfile
     ports:
       - "5002:8080"
-#  sqlserver:
-#    image: mcr.microsoft.com/mssql/server:2019-latest
-#    container_name: sqlserver
-#    environment:
-#      ACCEPT_EULA: "Y"
-#      MSSQL_SA_PASSWORD: "yma2578K#"
-#      MSSQL_PID: "Developer"
-#    ports:
-#      - "1433:5003"
+    networks:
+      - devfreela
+    environment:
+      DB_SERVER: mysql
+      DB_DATABASE: "devfreela"
+      DB_USER: "dev"
+      DB_PASSWORD: "yma2578k"
+    depends_on:
+      - mysql
   mysql:
     image: mysql:8.0
     container_name: devfreela.db
@@ -26,7 +26,12 @@
       MYSQL_PASSWORD: "yma2578k"
     ports:
       - "5001:3306"
+    networks:
+      - devfreela 
     volumes:
       - mysql_data:/var/lib/mysql
 volumes:
   mysql_data:
+networks:
+  devfreela:
+    driver: bridge
