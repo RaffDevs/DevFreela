@@ -35,6 +35,6 @@ ENV DB_PASSWORD=yma2578k
 ENV DB_PORT=5432
 
 # Definindo o ponto de entrada do container
-#ENTRYPOINT ["dotnet", "DevFreela.API.dll"]
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["dotnet", "DevFreela.API.dll"]
+#ENTRYPOINT ["/app/entrypoint.sh"]
 

@@ -4,16 +4,16 @@ using DevFreela.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-// string? server = Environment.GetEnvironmentVariable("DB_SERVER");
-// string? port = Environment.GetEnvironmentVariable("DB_PORT");
-// string? database = Environment.GetEnvironmentVariable("DB_DATABASE");
-// string? user = Environment.GetEnvironmentVariable("DB_USER");
-// string? password = Environment.GetEnvironmentVariable("DB_PASSWORD");
-string? server = "localhost";
-string? port = "5001";
-string? database = "devfreela";
-string? user = "dev";
-string? password = "yma2578k";
+string? server = Environment.GetEnvironmentVariable("DB_SERVER");
+string? port = Environment.GetEnvironmentVariable("DB_PORT");
+string? database = Environment.GetEnvironmentVariable("DB_DATABASE");
+string? user = Environment.GetEnvironmentVariable("DB_USER");
+string? password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+// string? server = "localhost";
+// string? port = "5001";
+// string? database = "devfreela";
+// string? user = "dev";
+// string? password = "yma2578k";
 
 string connectionString = $"Host={server};" +
                           $"Port={port};" +

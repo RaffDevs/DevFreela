@@ -44,7 +44,7 @@ public class ProjectService : IProjectService
         var project = new Project(inputModel.Title, inputModel.Description, inputModel.IdClient,
             inputModel.IdFreelancer, inputModel.IdFreelancer);
         _devFreelaDbContext.Projects.Add(project);
-
+        _devFreelaDbContext.SaveChanges();
         return project.Id;
     }
 
@@ -52,24 +52,32 @@ public class ProjectService : IProjectService
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == inputModel.Id);
         project?.Update(inputModel.Title, inputModel.Description, inputModel.TotalCost);
+        _devFreelaDbContext.SaveChanges();
+
     }
 
     public void Delete(int id)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
         project?.Cancel();
+        _devFreelaDbContext.SaveChanges();
+
     }
 
     public void Start(int id)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
         project?.Start();
+        _devFreelaDbContext.SaveChanges();
+
     }
 
     public void Finish(int id)
     {
         var project = _devFreelaDbContext.Projects.SingleOrDefault(p => p.Id == id);
         project?.Finish();
+        _devFreelaDbContext.SaveChanges();
+
     }
 
     public void CreateComment(CreateCommentInputModel inputModel)
