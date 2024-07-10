@@ -22,19 +22,19 @@ ENV PATH="$PATH:/root/.dotnet/tools"
 COPY [".", "/app/DevFreela"]
 
 # Copiando o script de inicialização para o container
-COPY ["DevFreela.API/entrypoint.sh", "/app/entrypoint.sh"]
+COPY ["./entrypoint.sh", "/app/entrypoint.sh"]
 RUN chmod +x /app/entrypoint.sh
 
 # Copiando o código da aplicação para a estrutura correta
 
 # Definindo variáveis de ambiente
-ENV DB_SERVER=172.31.0.2
+ENV DB_SERVER=devfreela.db
 ENV DB_DATABASE=devfreela
 ENV DB_USER=dev
 ENV DB_PASSWORD=yma2578k
 ENV DB_PORT=5432
 
 # Definindo o ponto de entrada do container
-ENTRYPOINT ["dotnet", "DevFreela.API.dll"]
-#ENTRYPOINT ["/app/entrypoint.sh"]
+#ENTRYPOINT ["dotnet", "DevFreela.API.dll"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
