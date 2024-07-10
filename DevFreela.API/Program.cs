@@ -4,15 +4,31 @@ using DevFreela.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-string connectionString = $"Server={Environment.GetEnvironmentVariable("DB_SERVER")};" +
-                          $"Database={Environment.GetEnvironmentVariable("DB_DATABASE")};" +
-                          $"User={Environment.GetEnvironmentVariable("DB_USER")};" +
-                          $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};";
+// string? server = Environment.GetEnvironmentVariable("DB_SERVER");
+// string? port = Environment.GetEnvironmentVariable("DB_PORT");
+// string? database = Environment.GetEnvironmentVariable("DB_DATABASE");
+// string? user = Environment.GetEnvironmentVariable("DB_USER");
+// string? password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+string? server = "localhost";
+string? port = "5001";
+string? database = "devfreela";
+string? user = "dev";
+string? password = "yma2578k";
+
+string connectionString = $"Host={server};" +
+                          $"Port={port};" +
+                          $"Pooling=true;" +
+                          $"Database={database};" +
+                          $"User Id={user};" +
+                          $"Password={password};";
+
+
 // Add services to the container.
 builder.Services.AddDbContext<DevFreelaDbContext>(options =>
 {
-    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21)));
+    options.UseNpgsql(connectionString);
 });
+
 builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<ISkillService, SkillService>();
 builder.Services.AddControllers();

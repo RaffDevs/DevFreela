@@ -1,4 +1,16 @@
 ﻿services:
+  devfreela.db:
+    image: postgres
+    container_name: devfreela.db
+    environment:
+      POSTGRES_DB: "devfreela"
+      POSTGRES_USER: "dev"
+      POSTGRES_PASSWORD: "yma2578k"
+    ports:
+      - "5001:5432"
+    networks:
+      - devfreela
+  
   devfreela.api:
     image: devfreela.api
     container_name: devfreela.api
@@ -10,28 +22,15 @@
     networks:
       - devfreela
     environment:
-      DB_SERVER: mysql
+      DB_SERVER: devfreela.db
       DB_DATABASE: "devfreela"
       DB_USER: "dev"
       DB_PASSWORD: "yma2578k"
+      DB_PORT: 5432
     depends_on:
-      - mysql
-  mysql:
-    image: mysql:8.0
-    container_name: devfreela.db
-    environment:
-      MYSQL_ROOT_PASSWORD: "yma2578k"
-      MYSQL_DATABASE: "devfreela"
-      MYSQL_USER: "dev"
-      MYSQL_PASSWORD: "yma2578k"
-    ports:
-      - "5001:3306"
-    networks:
-      - devfreela 
-    volumes:
-      - mysql_data:/var/lib/mysql
+      - devfreela.db
 volumes:
-  mysql_data:
+  postgres_data:
 networks:
   devfreela:
     driver: bridge
